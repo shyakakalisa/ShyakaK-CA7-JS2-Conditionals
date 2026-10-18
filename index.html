@@ -3,32 +3,95 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="author" content="Shyaka Kalisa">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bear Ninja Hunter JavaScript Game">
     <title>Bear Ninja Hunter</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: darkgreen;
+        }
+
+        #gameResult {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+    </style>
 </head>
+
 <body>
+
     <h1>Bear Ninja Hunter</h1>
+
     <p id="gameResult"></p>
 
     <script>
-        // Step 1 & 2: Prompt introducing Bear Ninja Hunter, collecting the name, and storing it
-let playerName = prompt("Welcome to Bear Ninja Hunter! Please enter your name:");
+        // Ask the player for their name
+        let playerName = prompt("Welcome to Bear Ninja Hunter! Please enter your name:");
 
-// Step 3: Display greeting for every player using string concatenation (no if statement)
-alert("Hi " + playerName + " Let's Play!!");
+        // Greet the player
+        alert("Hi " + playerName + " Let's Play!!");
 
-// Step 4 & 5: Ask for the player's choice and store it
-let playerChoice = prompt("Who are you: Bear, Ninja, or Hunter?");
+        // Ask the player to choose a character
+        let playerChoice = prompt("Who are you: Bear, Ninja, or Hunter?");
 
-// Step 6: Store "Bear" as the computer's fixed choice
-let computerChoice = "Bear";
+        // The computer always chooses Bear for this assignment
+        let computerChoice = "Bear";
 
-// Step 7: Build the personalized result using concatenation matching exact required wording
-let resultMessage = playerName + ", You picked " + playerChoice + "! The computer picked " + computerChoice + "!";
+        // Store the winner message
+        let winnerMessage = "";
 
-// Step 8: Display the result using console.log() and innerHTML matching "gameResult"
-console.log(resultMessage);
-document.getElementById("gameResult").innerHTML = resultMessage;
+        // Check if both players made the same choice
+        if (playerChoice === computerChoice) {
+            winnerMessage = "It's a Tie!!";
+        }
+        else if (
+            (playerChoice === "Bear" && computerChoice === "Ninja") ||
+            (playerChoice === "Ninja" && computerChoice === "Hunter") ||
+            (playerChoice === "Hunter" && computerChoice === "Bear")
+        ) {
+            winnerMessage = "You Win!!";
+        }
+        else {
+            winnerMessage = "Computer Wins!!";
+        }
+
+        // Use switch to check the player's choice
+        switch (playerChoice) {
+            case "Bear":
+                console.log("Player selected Bear");
+                break;
+
+            case "Ninja":
+                console.log("Player selected Ninja");
+                break;
+
+            case "Hunter":
+                console.log("Player selected Hunter");
+                break;
+        }
+
+        // Combine the player's name, choices, and result
+        let gameMessage = playerName + " chose " + playerChoice +
+            ", computer chose " + computerChoice +
+            ", " + winnerMessage;
+
+        // Display the game result in the console
+        console.log(gameMessage);
+
+        // Display the same result on the HTML page
+        document.getElementById("gameResult").innerHTML = gameMessage;
+
     </script>
+
 </body>
 </html>
