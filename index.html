@@ -10,8 +10,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
             margin: 40px;
+            text-align: center;
             background-color: #f4f4f4;
         }
 
@@ -21,17 +21,15 @@
 
         #gameResult {
             background-color: white;
-            padding: 20px;
             border: 1px solid #ccc;
+            padding: 20px;
             margin-top: 20px;
         }
     </style>
 </head>
-
 <body>
 
     <h1>Bear Ninja Hunter</h1>
-
     <p id="gameResult"></p>
 
     <script>
@@ -41,55 +39,68 @@
         // Greet the player
         alert("Hi " + playerName + " Let's Play!!");
 
-        // Ask the player to choose a character
+        // Ask the player to choose Bear, Ninja, or Hunter
         let playerChoice = prompt("Who are you: Bear, Ninja, or Hunter?");
 
-        // The computer always chooses Bear for this assignment
+        // Computer choice stays Bear for Part 2
         let computerChoice = "Bear";
 
-        // Store the winner message
-        let winnerMessage = "";
+        // This variable stores the game outcome
+        let gameWinner = "";
 
-        // Check if both players made the same choice
-        if (playerChoice === computerChoice) {
-            winnerMessage = "It's a Tie!!";
-        }
-        else if (
-            (playerChoice === "Bear" && computerChoice === "Ninja") ||
-            (playerChoice === "Ninja" && computerChoice === "Hunter") ||
-            (playerChoice === "Hunter" && computerChoice === "Bear")
-        ) {
-            winnerMessage = "You Win!!";
-        }
-        else {
-            winnerMessage = "Computer Wins!!";
-        }
+        // Check the computer's choice using switch
+        switch (computerChoice) {
 
-        // Use switch to check the player's choice
-        switch (playerChoice) {
             case "Bear":
-                console.log("Player selected Bear");
+                // Compare the player's choice against Bear
+                if (playerChoice === "Bear") {
+                    gameWinner = "It's a Tie!!";
+                }
+                else if (playerChoice === "Hunter") {
+                    gameWinner = "You Win!!";
+                }
+                else {
+                    gameWinner = "Computer Wins!!";
+                }
                 break;
 
             case "Ninja":
-                console.log("Player selected Ninja");
+                // Compare the player's choice against Ninja
+                if (playerChoice === "Ninja") {
+                    gameWinner = "It's a Tie!!";
+                }
+                else if (playerChoice === "Bear") {
+                    gameWinner = "You Win!!";
+                }
+                else {
+                    gameWinner = "Computer Wins!!";
+                }
                 break;
 
             case "Hunter":
-                console.log("Player selected Hunter");
+                // Compare the player's choice against Hunter
+                if (playerChoice === "Hunter") {
+                    gameWinner = "It's a Tie!!";
+                }
+                else if (playerChoice === "Ninja") {
+                    gameWinner = "You Win!!";
+                }
+                else {
+                    gameWinner = "Computer Wins!!";
+                }
                 break;
         }
 
-        // Combine the player's name, choices, and result
+        // Build the personalized result with concatenation
         let gameMessage = playerName + " chose " + playerChoice +
             ", computer chose " + computerChoice +
-            ", " + winnerMessage;
+            ", " + gameWinner;
 
-        // Display the game result in the console
+        // Show the result in the browser console
         console.log(gameMessage);
 
-        // Display the same result on the HTML page
-        document.getElementById("gameResult").innerHTML = gameMessage;
+        // Show the same result on the HTML page
+        document.getElementById("gameResult").textContent = gameMessage;
 
     </script>
 
